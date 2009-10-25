@@ -57,4 +57,5 @@ class ReglePartie:
 
     # POINT_BONUS :dict {nom : valeur des points en bonus}
     POINT_BONUS = {'petit_au_bout': 10}
+    
         

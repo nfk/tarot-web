@@ -6,39 +6,26 @@ Date    : 24 oct. 2009
 
 from constantes import TypeCarte
 from constantes import ReglePartie
+from carte import Carte
+from joueur import Joueur
 
-class Carte:
-    '''
-    objet carte
-    '''
-  
-    def __init__(self, nom, valeur, point, couleur):
-        '''
-        Constructor
-        '''
-        self.__nom      = str(nom)
-        self.__valeur   = int(valeur)
-        self.__point    = float(point)
-        self.__couleur  = str(couleur)
-    
-    def __str__(self):
-        return self.__nom + " " + self.__couleur
-    
-    def info(self):
-        return self.__nom + "\t" + self.__couleur + \
-                    "\t" +  str(self.__point) + "\t" + str(self.__valeur)
+from erreurs import MaxJoueursAtteint
 
-
-class Cartes:
+class Partie:
     '''
     ensemble des cartes du jeu de tarot
     '''
 
-    def __init__(self):
+    def __init__(self, nb_joueurs):
         '''
         Constructor
         '''
-        self.__cartes = []
+        # variables
+        self.__nbJoueurs = nb_joueurs
+        self._cartes = []
+        self._joueurs = []
+        
+        # initialisation
         self.__creationJeu()
         
     def __creationJeu(self):
@@ -56,13 +43,26 @@ class Cartes:
                     point = ReglePartie.POINT['outdler']
                 if point is None:
                     point = ReglePartie.POINT['base']
-                self.__cartes.append(Carte(nom, valeur, point, couleur))
+                self._cartes.append(Carte(nom, valeur, point, couleur))
                 
     def getCartes(self):
+        return self._cartes
+    
+    def getJoueurs(self):
+        return self._joueurs
+    
+    
+    def addJoueur(self, joueur):
         '''
-        accesseurs sur le jeu de tarot
+        ajout d un joueur a la partie
         '''
-        return self.__cartes
-
-
+        if self._joueurs.__len__() == self.__nbJoueurs:
+            raise MaxJoueursAtteint()
+            
+        self._joueurs.append(joueur)
         
+    
+    def distribution(self, joueurs):
+        pass
+
+            
