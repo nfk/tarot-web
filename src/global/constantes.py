@@ -15,7 +15,7 @@ class TypeCarte:
                 'sept': 7,      'huit': 8,      'neuf': 9,
                 'dix': 10,      'valet': 11,    'cavalier': 12,
                 'reine': 13,    'roi': 14}
-
+    
     # ATOUT : dict {nom : indice carte}
     ATOUT = {   'petit': 1,     'deux': 2,      'trois': 3,
                 'quatre': 4,    'cinq': 5,      'six': 6,
@@ -30,7 +30,7 @@ class TypeCarte:
     OUTDLERS = {'petit': 1,   'vingt-et-un': 21, 'excuse':0}
 
     # COULEUR : dict {nom : indice}
-    COULEUR =  {'carreau': 0, 'coeur': 1, 'trefle': 2, 'pique':3}
+    COULEUR =  {'pique': 0, 'coeur': 1, 'carreau': 2, 'trefle':3, 'atout':4}
 
     # NB_CARTES : nombre de carte dans un jeu de tarot
     NB_CARTES = 78
@@ -56,5 +56,5 @@ class ReglePartie:
                'roi': 4.5, 'outdler': 4.5, 'total': 91}
 
     # POINT_BONUS :dict {nom : valeur des points en bonus}
-    POINT_BONUS = {'petit_au_bout': 10,}
+    POINT_BONUS = {'petit_au_bout': 10}
         
