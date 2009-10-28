@@ -19,7 +19,10 @@ class Carte:
         self.__couleur  = str(couleur)
     
     def __str__(self):
-        return self.__nom + " " + self.__couleur
+        return str(self.__nom + " " + self.__couleur)
+    
+    def __repr__(self):
+        return repr(self.__nom + " " + self.__couleur)
     
     def info(self):
         return self.__nom + "\t" + self.__couleur + \

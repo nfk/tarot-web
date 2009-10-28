@@ -15,5 +15,9 @@ class Partie4Joueurs(Partie):
         '''
         Constructor
         '''
-        Partie.__init__(self, 4)
+        JOUEURS = 4
+        CARTES_AU_CHIEN = 6
+        
+        Partie.__init__(self, JOUEURS, CARTES_AU_CHIEN)
+        
         

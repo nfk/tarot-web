@@ -9,7 +9,7 @@ import unittest
 from constantes import TypeCarte
 from partie4joueurs import Partie4Joueurs
 from joueur import Joueur
-from erreurs import MaxJoueursAtteint
+import erreurs 
 
 class ListeCartesJeuTarot(unittest.TestCase):
     '''
@@ -21,18 +21,41 @@ class ListeCartesJeuTarot(unittest.TestCase):
 #        print ""
 #        for carte in c.getCartes():
 #            print carte.info()
-        self.assertEquals(partie.getCartes().__len__(), TypeCarte.NB_CARTES)
+        self.assertEquals(partie.cartes.__len__(), TypeCarte.NB_CARTES)
         
     
     def testAddJoueurs(self):
         partie = Partie4Joueurs()
-        ident = "joueur"
         for i in range(4):
-            j = Joueur(ident + str(i))
+            j = Joueur("joueur" + str(i+1))
             partie.addJoueur(j)
         
-        self.assertEquals(partie.getJoueurs().__len__(), 4)
+        self.assertEquals(partie.joueurs.__len__(), 4)
         
         j =  Joueur("newJoueur")
-        self.assertRaises(MaxJoueursAtteint, partie.addJoueur, j)
+        self.assertRaises(erreurs.MaxJoueursAtteint, partie.addJoueur, j)
+        
+    def testDistribution(self):
+        partie = Partie4Joueurs()
+        
+        # distrib sans add joueur
+        self.assertRaises(erreurs.ManqueJoueurs, partie.distribution)
+        
+        # add des 4 joueurs
+        for i in range(4):
+            j = Joueur("joueur" + str(i+1))
+            partie.addJoueur(j)
+        
+        self.assertEquals(partie.joueurs.__len__(), 4)
+        
+        #distrib des cartes
+        partie.distribution()
+        self.assertEquals(partie.cartesAuChien.__len__(), 6)
+        
+        # chaque joueur a le bon nombre de cartes
+        for joueur in partie.joueurs:
+            print joueur.identifiant
+            print joueur.cartes
+            self.assertEquals(joueur.cartes.__len__(), 18)
+        
 
