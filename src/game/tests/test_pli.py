@@ -10,7 +10,7 @@ from carte import Carte
 
 class Test(unittest.TestCase):
 
-    def testPli(self):
+    def testPliControle(self):
         joueur = Joueur('joueur1')
         pli = Pli()
         
@@ -23,10 +23,21 @@ class Test(unittest.TestCase):
         joueur.setCarte(Carte('reine', 13, 3.5, 'coeur'))
         joueur.setCarte(Carte('as', 1, 0.5, 'coeur'))
 
-        # La couleur demandee est le trefle
-        pli.add(Carte('as', 1, 0.5, 'trefle'))
+        # je joue la premiere carte
+        carteAjouer = joueur.getCartes()[0]
+        self.assertEquals(pli.controle(joueur, carteAjouer), True)
+        
+        # je joue comme premiere carte l excuse
+        carteAjouer = Carte('excuse', 0, 4.5, 'atout')
+        self.assertEquals(pli.controle(joueur, carteAjouer), True)
+        pli.add(carteAjouer)
 
-        # L atout est superieur
+        # La premiere carte est l excuse le second joueur joue un AS de trefle
+        carteAjouer = Carte('as', 1, 0.5, 'trefle')
+        self.assertEquals(pli.controle(joueur, carteAjouer), True)
+        pli.add(carteAjouer)
+
+        # Le joueur coupe car il n a pas de trefle
         carteAjouer = joueur.getCartes()[0]
         self.assertEquals(pli.controle(joueur, carteAjouer), True)
         
