@@ -9,7 +9,7 @@ import unittest
 from constantes import TypeCarte
 from partie4joueurs import Partie4Joueurs
 from joueur import Joueur
-import erreurs 
+import erreur 
 
 class ListeCartesJeuTarot(unittest.TestCase):
     '''
@@ -18,10 +18,7 @@ class ListeCartesJeuTarot(unittest.TestCase):
 
     def testCartes(self):
         partie = Partie4Joueurs()
-#        print ""
-#        for carte in c.getCartes():
-#            print carte.info()
-        self.assertEquals(partie.cartes.__len__(), TypeCarte.NB_CARTES)
+        self.assertEquals(len(partie.cartes), TypeCarte.NB_CARTES)
         
     
     def testAddJoueurs(self):
@@ -30,32 +27,31 @@ class ListeCartesJeuTarot(unittest.TestCase):
             j = Joueur("joueur" + str(i+1))
             partie.addJoueur(j)
         
-        self.assertEquals(partie.joueurs.__len__(), 4)
+        self.assertEquals(len(partie.joueurs), 4)
         
         j =  Joueur("newJoueur")
-        self.assertRaises(erreurs.MaxJoueursAtteint, partie.addJoueur, j)
+        self.assertRaises(erreur.MaxJoueursAtteint, partie.addJoueur, j)
         
     def testDistribution(self):
         partie = Partie4Joueurs()
         
         # distrib sans add joueur
-        self.assertRaises(erreurs.ManqueJoueurs, partie.distribution)
+        self.assertRaises(erreur.ManqueJoueurs, partie.distribution)
         
         # add des 4 joueurs
         for i in range(4):
             j = Joueur("joueur" + str(i+1))
             partie.addJoueur(j)
         
-        self.assertEquals(partie.joueurs.__len__(), 4)
+        self.assertEquals(len(partie.joueurs), 4)
         
         #distrib des cartes
         partie.distribution()
-        self.assertEquals(partie.cartesAuChien.__len__(), 6)
+        self.assertEquals(len(partie.cartesAuChien), 6)
         
         # chaque joueur a le bon nombre de cartes
         for joueur in partie.joueurs:
-            print joueur.identifiant
-            print joueur.cartes
-            self.assertEquals(joueur.cartes.__len__(), 18)
+            self.assertEquals(len(joueur.cartes), 18)
         
-
+if __name__ == "__main__":
+    unittest.main()

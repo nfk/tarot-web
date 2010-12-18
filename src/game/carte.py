@@ -10,23 +10,21 @@ class Carte:
     '''
   
     def __init__(self, nom, valeur, point, couleur):
-        '''
-        Constructor
-        '''
-        self.__nom      = str(nom)
-        self.__valeur   = int(valeur)
-        self.__point    = float(point)
-        self.__couleur  = str(couleur)
+        ''' Constructor '''
+        self.nom      = str(nom)
+        self.valeur   = int(valeur)
+        self.point    = float(point)
+        self.couleur  = str(couleur)
     
     def __str__(self):
-        return str(self.__nom + " " + self.__couleur)
+        return str(self.couleur)
     
     def __repr__(self):
-        return repr(self.__nom + " " + self.__couleur)
+        return repr(self.nom + " " + self.couleur)
     
     def info(self):
-        return self.__nom + "\t" + self.__couleur + \
-                    "\t" +  str(self.__point) + "\t" + str(self.__valeur)
+        return self.nom + "\t" + self.couleur + \
+                    "\t" +  str(self.point) + "\t" + str(self.valeur)
 
 
         

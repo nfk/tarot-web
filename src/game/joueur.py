@@ -4,8 +4,6 @@ Author  : nfk
 Date    : 25 oct. 2009
 '''
 
-from carte import Carte
-
 class Joueur:
     '''
     classdocs
@@ -29,16 +27,27 @@ class Joueur:
         self.__cartes.remove(carte)
         return carte;
 
-
     def getCartes(self):
         return self.__cartes
-
 
     def setCarte(self, carte):
         self.__cartes.append(carte)
         
     def getIdentifiant(self):
         return self.__identifiant
+
+    def hasCouleur(self, couleur):
+        for carte in self.__cartes:
+            if carte.couleur == couleur:
+                return True
+        return False
+    
+    def hasAtoutSuperieur(self, valeur):
+        for carte in self.__cartes:
+            if carte.valeur > valeur:
+                return True
+        return False
+        
 
     cartes = property(getCartes, None, None, None)
 
