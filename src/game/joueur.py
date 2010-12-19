@@ -21,6 +21,9 @@ class Joueur:
 
     def __str__(self):
         return str(self.__identifiant)
+    
+    def __repr__(self):
+        return repr(self.__identifiant)
 
     def joueCarte(self, index):
         carte = self.__cartes[index]

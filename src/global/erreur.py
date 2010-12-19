@@ -9,3 +9,15 @@ class MaxJoueursAtteint(Exception):
 
 class ManqueJoueurs(Exception):
     pass
+
+class PliComplet(Exception):
+    pass
+
+class PliIncomplet(Exception):
+    pass
+
+class PliJoueurADejaJoue(Exception):
+    pass
+
+class PliCarteDejaJouee(Exception):
+    pass
