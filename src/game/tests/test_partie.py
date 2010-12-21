@@ -11,7 +11,7 @@ from partie4joueurs import Partie4Joueurs
 from joueur import Joueur
 import erreur 
 
-class ListeCartesJeuTarot(unittest.TestCase):
+class TestPartie(unittest.TestCase):
     '''
     test le jeu de carte
     '''

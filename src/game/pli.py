@@ -121,4 +121,3 @@ class Pli:
                 
             self.point = self.point + p.carte.point
         
-        

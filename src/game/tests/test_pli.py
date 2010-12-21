@@ -9,7 +9,7 @@ from joueur import Joueur
 from pli import Pli
 from carte import Carte
 
-class Test(unittest.TestCase):
+class TestPli(unittest.TestCase):
 
     def testPliAdd(self):
         joueur1 = Joueur('joueur1')
@@ -63,7 +63,11 @@ class Test(unittest.TestCase):
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
         pli.add(carteAjouer, joueur2)
 
-        # Le joueur1 coupe car il n a pas de trefle
+        # Le joueur joue un roi de trefle
+        self.assertEquals(pli.controle(Carte('roi', 14, 4.5, 'trefle'), 
+                                       joueur1), True)
+
+        # Le joueur coupe car il n a pas de trefle
         carteAjouer = joueur1.getCartes()[0]
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
         
@@ -78,6 +82,33 @@ class Test(unittest.TestCase):
         # Le joueur1 joue autre chose qu atout alors qu il na pas de trefle
         carteAjouer = joueur1.getCartes()[4]
         self.assertEquals(pli.controle(carteAjouer, joueur1), False)
+        
+        # Le joueur n a pas la couleur demandee et pas d atout
+        joueur1.joueCarte(0)
+        joueur1.joueCarte(0)
+        joueur1.joueCarte(6)
+        
+        carteAjouer = joueur1.getCartes()[0] #quatre de pique
+        self.assertEquals(pli.controle(carteAjouer, joueur1), True)
+
+    def testPliResultat(self):
+        joueur1 = Joueur('joueur1')
+        joueur2 = Joueur('joueur2')
+        joueur3 = Joueur('joueur3')
+        joueur4 = Joueur('joueur4')
+        
+        pli = Pli()
+        pli.add(Carte('sept', 7, 0.5, 'coeur'), joueur1)
+        pli.add(Carte('roi', 14, 4.5, 'coeur'), joueur2)
+        pli.add(Carte('quatorze', 14, 0.5, 'atout'), joueur3)
+        
+        self.assertRaises(erreur.PliIncomplet,pli.resultat)
+        
+        pli.add(Carte('dame', 13, 3.5, 'coeur'), joueur4)
+        
+        pli.resultat()
+        self.assertEquals(pli.point, 4.5+0.5+0.5+3.5)
+        self.assertEquals(pli.winner, joueur3)
 
 
 if __name__ == "__main__":
