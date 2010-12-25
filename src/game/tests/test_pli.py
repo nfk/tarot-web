@@ -109,8 +109,3 @@ class TestPli(unittest.TestCase):
         pli.resultat()
         self.assertEquals(pli.point, 4.5+0.5+0.5+3.5)
         self.assertEquals(pli.winner, joueur3)
-
-
-if __name__ == "__main__":
-    unittest.main()
-    

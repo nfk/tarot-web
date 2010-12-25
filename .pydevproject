@@ -3,10 +3,10 @@
 
 <pydev_project>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/tarotweb/src</path>
-<path>/tarotweb/src/global</path>
-<path>/tarotweb/src/game/tests</path>
-<path>/tarotweb/src/game</path>
+<path>/tarot/src</path>
+<path>/tarot/src/global</path>
+<path>/tarot/src/game/tests</path>
+<path>/tarot/src/game</path>
 </pydev_pathproperty>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>

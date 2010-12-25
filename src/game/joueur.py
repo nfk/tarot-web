@@ -6,55 +6,37 @@ Date    : 25 oct. 2009
 
 class Joueur:
     '''
-    classdocs
+    definition d un joueur de tarot
     '''
     
     def __init__(self, ident):
         '''
         Constructor
         '''
-        self.__identifiant = ident
-        self.__score = 0
-        self.__prise = ""
-        self.__cartes = []
-
-
-    def __str__(self):
-        return str(self.__identifiant)
-    
-    def __repr__(self):
-        return repr(self.__identifiant)
+        self.identifiant = ident
+        self.score = 0
+        self.prise = ""
+        self.cartes = []
 
     def joueCarte(self, index):
-        carte = self.__cartes[index]
-        self.__cartes.remove(carte)
+        carte = self.cartes[index]
+        self.cartes.remove(carte)
         return carte;
 
     def getCartes(self):
-        return self.__cartes
+        return self.cartes
 
     def setCarte(self, carte):
-        self.__cartes.append(carte)
-        
-    def getIdentifiant(self):
-        return self.__identifiant
+        self.cartes.append(carte)
 
     def hasCouleur(self, couleur):
-        for carte in self.__cartes:
+        for carte in self.cartes:
             if carte.couleur == couleur:
                 return True
         return False
     
     def hasAtoutSuperieur(self, valeur):
-        for carte in self.__cartes:
+        for carte in self.cartes:
             if carte.valeur > valeur:
                 return True
         return False
-        
-
-    cartes = property(getCartes, None, None, None)
-
-    identifiant = property(getIdentifiant, None, None, None)
-
-
-
