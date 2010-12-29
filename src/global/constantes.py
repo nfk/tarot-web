@@ -42,7 +42,8 @@ class ReglePartie:
     '''
     
     # ENCHERE : dict {nom : coef}
-    ENCHERE = {'petite': 1, 'garde': 2, 'garde_sans': 4, 'garde_contre': 8}
+    ENCHERE = {'passe':0, 'petite': 1, 'garde': 2, 'garde_sans': 4, 
+               'garde_contre': 8}
 
     # POINT_CONTRAT : dict {nom : point a atteindre}
     POINT_CONTRAT = {'sans_bout': 56, 'un_bout': 51, 'deux_bouts': 41, 

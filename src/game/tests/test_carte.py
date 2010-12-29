@@ -6,7 +6,7 @@ Date    : 25 dec. 2010
 import unittest
 from carte import Carte
 
-class Test(unittest.TestCase):
+class TestCarte(unittest.TestCase):
 
     def testCarte(self):
         carte = Carte('quatre', 4, 0.5, 'atout')

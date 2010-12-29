@@ -12,9 +12,6 @@ from joueur import Joueur
 import erreur 
 
 class TestPartie(unittest.TestCase):
-    '''
-    test le jeu de carte
-    '''
 
     def testCartes(self):
         partie = Partie4Joueurs()

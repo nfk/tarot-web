@@ -78,7 +78,7 @@ class Partie:
         while len(cartesTmp) > 0:
             for joueur in self.joueurs:
                 carte = random.choice(cartesTmp)
-                joueur.setCarte(carte)
+                joueur.addCarte(carte)
                 cartesTmp.remove(carte)
 
             

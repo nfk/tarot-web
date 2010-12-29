@@ -10,7 +10,9 @@ class Pli:
     '''
     gestion des plis pour 4 joueurs
     '''
+    
     def __init__(self):
+        ''' Constructeur '''
         self.pli = []
         self.Couple = namedtuple('Couple', 'carte joueur')
         self.nb_joueurs = 4

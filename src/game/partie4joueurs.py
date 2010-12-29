@@ -12,9 +12,7 @@ class Partie4Joueurs(Partie):
     '''
 
     def __init__(self):
-        '''
-        Constructor
-        '''     
+        ''' Constructeur '''
         Partie.__init__(self, nbJoueurs=4, nbCarteAuChien=6)
         
         

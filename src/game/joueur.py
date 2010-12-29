@@ -10,33 +10,34 @@ class Joueur:
     '''
     
     def __init__(self, ident):
-        '''
-        Constructor
-        '''
+        ''' Constructeur '''
         self.identifiant = ident
         self.score = 0
-        self.prise = ""
+        self.prise = 'passe'
         self.cartes = []
 
+
     def joueCarte(self, index):
+        ''' renvoi une carte et supprime la carte du joueur '''
         carte = self.cartes[index]
         self.cartes.remove(carte)
         return carte;
 
-    def getCartes(self):
-        return self.cartes
-
-    def setCarte(self, carte):
+    def addCarte(self, carte):
+        ''' ajoute une carte au joueur '''
         self.cartes.append(carte)
 
     def hasCouleur(self, couleur):
+        ''' le joueur a la couleur dans son jeu '''
         for carte in self.cartes:
             if carte.couleur == couleur:
                 return True
         return False
     
     def hasAtoutSuperieur(self, valeur):
+        ''' le joueur a un atout superieur'''
         for carte in self.cartes:
             if carte.valeur > valeur:
                 return True
         return False
+        

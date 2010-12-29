@@ -40,17 +40,17 @@ class TestPli(unittest.TestCase):
         
         pli = Pli()
         
-        joueur1.setCarte(Carte('quatre', 4, 0.5, 'atout'))
-        joueur1.setCarte(Carte('quatorze', 14, 0.5, 'atout'))
-        joueur1.setCarte(Carte('quatre', 4, 0.5, 'pique'))
-        joueur1.setCarte(Carte('six', 6, 0.5, 'pique'))
-        joueur1.setCarte(Carte('roi', 14, 4.5, 'pique'))
-        joueur1.setCarte(Carte('roi', 14, 4.5, 'coeur'))
-        joueur1.setCarte(Carte('reine', 13, 3.5, 'coeur'))
-        joueur1.setCarte(Carte('as', 1, 0.5, 'coeur'))
+        joueur1.addCarte(Carte('quatre', 4, 0.5, 'atout'))
+        joueur1.addCarte(Carte('quatorze', 14, 0.5, 'atout'))
+        joueur1.addCarte(Carte('quatre', 4, 0.5, 'pique'))
+        joueur1.addCarte(Carte('six', 6, 0.5, 'pique'))
+        joueur1.addCarte(Carte('roi', 14, 4.5, 'pique'))
+        joueur1.addCarte(Carte('roi', 14, 4.5, 'coeur'))
+        joueur1.addCarte(Carte('reine', 13, 3.5, 'coeur'))
+        joueur1.addCarte(Carte('as', 1, 0.5, 'coeur'))
 
         # je joue la premiere carte
-        carteAjouer = joueur1.getCartes()[0]
+        carteAjouer = joueur1.cartes[0]
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
         
         # je joue comme premiere carte l excuse
@@ -68,7 +68,7 @@ class TestPli(unittest.TestCase):
                                        joueur1), True)
 
         # Le joueur coupe car il n a pas de trefle
-        carteAjouer = joueur1.getCartes()[0]
+        carteAjouer = joueur1.cartes[0]
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
         
         # Le joueur1 fait pipi a l atout
@@ -76,11 +76,11 @@ class TestPli(unittest.TestCase):
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
         
         # Le joueur1 triche car il a un atout superieur
-        joueur1.setCarte(Carte('vingt-et-un', 21, 4.5, 'atout'))
+        joueur1.addCarte(Carte('vingt-et-un', 21, 4.5, 'atout'))
         self.assertEquals(pli.controle(carteAjouer, joueur1), False)
         
         # Le joueur1 joue autre chose qu atout alors qu il na pas de trefle
-        carteAjouer = joueur1.getCartes()[4]
+        carteAjouer = joueur1.cartes[4]
         self.assertEquals(pli.controle(carteAjouer, joueur1), False)
         
         # Le joueur n a pas la couleur demandee et pas d atout
@@ -88,7 +88,7 @@ class TestPli(unittest.TestCase):
         joueur1.joueCarte(0)
         joueur1.joueCarte(6)
         
-        carteAjouer = joueur1.getCartes()[0] #quatre de pique
+        carteAjouer = joueur1.cartes[0] #quatre de pique
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
 
     def testPliResultat(self):
