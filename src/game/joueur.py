@@ -40,4 +40,9 @@ class Joueur:
             if carte.valeur > valeur:
                 return True
         return False
-        
+    
+    def printCartes(self):
+        ''' affiche les cartes du joueur '''
+        print '\n'
+        for carte in self.cartes:
+            print carte.info()

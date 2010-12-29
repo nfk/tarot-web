@@ -4,6 +4,7 @@ Author  : nfk
 Date    : 28 dec. 2010
 '''
 from constantes import TypeCarte
+from constantes import ReglePartie
 
 class InfoJeu:
     nbRois = 0
@@ -11,7 +12,7 @@ class InfoJeu:
     nbAtouts = 0
     moyAtouts = 0
     moyCarteNormale = 0
-    points = 0.0
+    points = 0
 
 class StatsMainJoueur:
     '''
@@ -21,15 +22,37 @@ class StatsMainJoueur:
     def __init__(self):
         ''' Constructeur '''
         self.info = InfoJeu()
+        self.cartes = []
     
     def calcul(self, cartes):
         ''' calcul les stats sur le jeu de cartes '''
+        self.cartes = cartes
+        self.__razInfo()
         self.__countAtout()
         self.__countOutdlers()
         self.__countRoi()
-        self.__moyAtouts(cartes)
-        self.__moyCarteNormale(cartes)
+        self.__pourcentAtouts()
+        self.__pourcentCarteFortes()
+        self.__pourcentPoint()
 
+    def printStats(self):
+        ''' affiche les stats du jeu '''
+        print '\n ___________________________________'
+        print 'Nombre atouts = ' + str(self.info.nbAtouts)
+        print 'Nombre outdlers = ' + str(self.info.nbOutdlers)
+        print 'Nombre rois = ' + str(self.info.nbRois)
+        print 'Atouts = ' + str(self.info.moyAtouts) + '%'
+        print 'Cartes fortes = ' + str(self.info.moyCarteNormale) + '%'
+        print 'Point du jeu = ' + str(self.info.points) + '%'
+
+    def __razInfo(self):
+        ''' mise a zero des stats'''
+        self.info.nbRois = 0
+        self.info.nbOutdlers = 0
+        self.info.nbAtouts = 0
+        self.info.moyAtouts = 0
+        self.info.moyCarteNormale = 0
+        self.info.points = 0
 
     def __countOutdlers(self):
         ''' compte le nombre de bouts dans le jeu '''
@@ -50,30 +73,31 @@ class StatsMainJoueur:
             if carte.nom is 'roi':
                 self.info.nbRois += 1          
         
-    def __moyAtouts(self, cartes):
+    def __pourcentAtouts(self):
         ''' valeur moyenne des atouts'''
         # TODO pourcentage des atouts
         atouts = []
-        for carte in cartes:
+        for carte in self.cartes:
             if carte.couleur is 'atout':
                 atouts.append(carte.valeur)
                 
         self.info.moyAtouts = sum(atouts)*100 / sum(TypeCarte.ATOUT.values()) 
         
-    def __moyCarteNormale(self, cartes):
+    def __pourcentCarteFortes(self):
         ''' valeur moyenne des cartes standard '''
         values = []
-        for carte in cartes:
-            if carte.couleur is not 'atout':
-                values.append(carte.valeur)
+        for carte in self.cartes:
+            if carte.couleur is not 'atout' and carte.point > 0.5:
+                values.append(carte)
         
-        self.info.moyCarteNormale = sum(values)/len(values)
+        
+        self.info.moyCarteNormale = len(values)*100 / TypeCarte.NB_TETES
                  
-    def __point(self, cartes):
+    def __pourcentPoint(self):
         ''' valeur en point des cartes '''
         points = []
-        for carte in cartes:
+        for carte in self.cartes:
             points.append(carte.point)
         
-        self.info.points = sum(points)
+        self.info.points = int(sum(points)*100 / ReglePartie.POINT['total']) 
         

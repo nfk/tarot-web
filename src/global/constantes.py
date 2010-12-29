@@ -9,7 +9,7 @@ class TypeCarte:
     definition des types de cartes compose par le jeu de tarot
     '''
     
-    # ENCHERE : dict {nom : indice carte}
+    # BASIC : dict {nom : indice carte}
     BASIC = {   'as': 1,        'deux': 2,      'trois': 3,
                 'quatre': 4,    'cinq': 5,      'six': 6,
                 'sept': 7,      'huit': 8,      'neuf': 9,
@@ -34,6 +34,9 @@ class TypeCarte:
 
     # NB_CARTES : nombre de carte dans un jeu de tarot
     NB_CARTES = 78
+    
+    # NB_TETES : nombre de tetes du jeu (valet, cavalier, reine, roi)
+    NB_TETES = 4 * 4
 
 
 class ReglePartie:
@@ -50,7 +53,9 @@ class ReglePartie:
                'trois_bouts': 36}
     
     # POIGNEE : dict {nom : nombre d atouts}
-    POIGNEE = {'simple': 10, 'double': 13, 'triple': 10}
+    POIGNEE = {'simple': 10, 'double': 13, 'triple': 15}
+    
+    POINT_POIGNEE = {'simple': 20, 'double': 30, 'triple': 40}
     
     # POINT : dict {nom : valeur des cartes}
     POINT   = {'base': 0.5, 'valet': 1.5, 'cavalier': 2.5, 'reine': 3.5,
