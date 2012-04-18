@@ -5,11 +5,13 @@ Date    : 28 dec. 2010
 '''
 from constantes import TypeCarte
 from constantes import ReglePartie
+from copy import deepcopy
 
 class InfoJeu:
     nbRois = 0
     nbOutdlers = 0
     nbAtouts = 0
+    nbCouleur = deepcopy(TypeCarte.COULEUR)
     moyAtouts = 0
     moyCarteNormale = 0
     points = 0
@@ -31,6 +33,7 @@ class StatsMainJoueur:
         self.__countAtout()
         self.__countOutdlers()
         self.__countRoi()
+        self.__countCouleur()
         self.__pourcentAtouts()
         self.__pourcentCarteFortes()
         self.__pourcentPoint()
@@ -41,6 +44,8 @@ class StatsMainJoueur:
         print 'Nombre atouts = ' + str(self.info.nbAtouts)
         print 'Nombre outdlers = ' + str(self.info.nbOutdlers)
         print 'Nombre rois = ' + str(self.info.nbRois)
+        for couleur, valeur in self.info.nbCouleur.items():
+            print 'Nombre ' + couleur + ' = ' + str(valeur)
         print 'Atouts = ' + str(self.info.moyAtouts) + '%'
         print 'Cartes fortes = ' + str(self.info.moyCarteNormale) + '%'
         print 'Point du jeu = ' + str(self.info.points) + '%'
@@ -50,6 +55,8 @@ class StatsMainJoueur:
         self.info.nbRois = 0
         self.info.nbOutdlers = 0
         self.info.nbAtouts = 0
+        for couleur in self.info.nbCouleur.keys():
+            self.info.nbCouleur[couleur] = 0
         self.info.moyAtouts = 0
         self.info.moyCarteNormale = 0
         self.info.points = 0
@@ -75,7 +82,6 @@ class StatsMainJoueur:
         
     def __pourcentAtouts(self):
         ''' valeur moyenne des atouts'''
-        # TODO pourcentage des atouts
         atouts = []
         for carte in self.cartes:
             if carte.couleur is 'atout':
@@ -89,8 +95,7 @@ class StatsMainJoueur:
         for carte in self.cartes:
             if carte.couleur is not 'atout' and carte.point > 0.5:
                 values.append(carte)
-        
-        
+              
         self.info.moyCarteNormale = len(values)*100 / TypeCarte.NB_TETES
                  
     def __pourcentPoint(self):
@@ -99,5 +104,12 @@ class StatsMainJoueur:
         for carte in self.cartes:
             points.append(carte.point)
         
-        self.info.points = int(sum(points)*100 / ReglePartie.POINT['total']) 
+        self.info.points = int(sum(points)*100 / ReglePartie.POINT['total'])
+        
+    def __countCouleur(self):
+        ''' calcul le nombre de cartes dans chaque couleurs '''
+        for carte in self.cartes:
+            if TypeCarte.COULEUR.has_key(carte.couleur):
+                self.info.nbCouleur[carte.couleur] += 1
+        
         

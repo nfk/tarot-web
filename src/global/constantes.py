@@ -30,7 +30,11 @@ class TypeCarte:
     OUTDLERS = {'petit': 1,   'vingt-et-un': 21, 'excuse':0}
 
     # COULEUR : dict {nom : indice}
-    COULEUR =  {'pique': 0, 'coeur': 1, 'carreau': 2, 'trefle':3, 'atout':4}
+    COULEUR =  {'pique': 0, 'coeur': 1, 'carreau': 2, 'trefle':3}
+
+    # COULEUR + ATOUT : dict {nom : indice}
+    COULEUR_ET_ATOUT = COULEUR.copy()
+    COULEUR_ET_ATOUT['atout'] = 4
 
     # NB_CARTES : nombre de carte dans un jeu de tarot
     NB_CARTES = 78

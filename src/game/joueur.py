@@ -17,9 +17,8 @@ class Joueur:
         self.prise = 'passe'
         self.cartes = []
 
-
     def joueCarte(self, index):
-        ''' renvoi une carte et supprime la carte du joueur '''
+        ''' retourne une carte et supprime la carte du joueur '''
         carte = self.cartes[index]
         self.cartes.remove(carte)
         return carte

@@ -52,11 +52,11 @@ class Pli:
         if carte.couleur is 'atout'\
                                 and joueur.hasCouleur(first.couleur) == False:
             # L atout est superieur
-            max = self.__valeurMaxAtouts()
-            if carte.valeur > max:
+            valeurMax = self.__valeurMaxAtouts()
+            if carte.valeur > valeurMax:
                 return True   
             # Le joueur fait pipi
-            if carte.valeur < max and joueur.hasAtoutSuperieur(max) == False:
+            if carte.valeur < valeurMax and joueur.hasAtoutSuperieur(valeurMax) == False:
                 return True
         
         # Le joueur n a pas la couleur demandee et pas d atout

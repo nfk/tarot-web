@@ -34,7 +34,7 @@ class Partie:
         
     def __creationJeu(self):
         ''' creation du jeu de tarot '''
-        for couleur in TypeCarte.COULEUR.iterkeys():
+        for couleur in TypeCarte.COULEUR_ET_ATOUT.iterkeys():
             iterCartes = TypeCarte.BASIC.items()
             if couleur == 'atout':
                 iterCartes = TypeCarte.ATOUT.items()

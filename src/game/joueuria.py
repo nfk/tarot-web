@@ -17,42 +17,43 @@ class JoueurIA:
         ''' analyse du jeu et determine le type d'appel '''
         #Todo joueur ponderer moyenne atout et moyenne tete du jeu du joueur
         
+        j = self.joueur
+        
         # Si on a pas plus de 4 atouts, 1 roi et 1 bout au minimum, on passe
-        if self.joueur.countAtout() < 4 and self.joueur.countRoi() < 2 and\
-            self.joueur.countOutdlers() < 2:
+        if j.countAtout() < 4 and j.countRoi() < 2 and j.countOutdlers() < 2:
             return 'passe'
         
         # Si on a 2 rois peu d'atout et un bout
-        if self.joueur.countAtout() < 6  and self.joueur.countRoi() == 2 and\
-            self.joueur.countOutdlers() == 1:
+        if j.countAtout() < 6  and j.countRoi() == 2 and j.countOutdlers() == 1:
             return 'petite'
         
         # Si on a 1 roi, des atouts et un bout
-        if self.joueur.countAtout() > 6 and self.joueur.countAtout() < 9 and\
-            self.joueur.countRoi() == 1 and self.joueur.countOutdlers() == 1:
+        if j.countAtout() > 6 and j.countAtout() < 9 and j.countRoi() == 1 and\
+            j.countOutdlers() == 1:
             return 'petite' 
         
         # Si on a 2 bouts et un petit jeu
-        if self.joueur.countAtout() < 6 and self.joueur.countRoi() == 1 and\
-            self.joueur.countOutdlers() == 2:
+        if j.countAtout() < 6 and j.countRoi() == 1 and j.countOutdlers() == 2:
             return 'petite' 
         
         # Si on a 2 rois 2 bouts et 4 ou plus d'atouts
-        if self.joueur.countAtout() >= 4  and self.joueur.countRoi() == 2 and\
-            self.joueur.countOutdlers() == 1:
+        if j.countAtout() >= 4  and j.countRoi() == 2 and\
+            j.countOutdlers() == 1:
             return 'garde'
         
         # Si on a 2 rois 2 bouts et 4 ou plus d'atouts
-        if self.joueur.countAtout() >= 4  and self.joueur.countRoi() == 2 and\
-            self.joueur.countOutdlers() == 1:
+        if j.countAtout() >= 4  and j.countRoi() == 2 and\
+            j.countOutdlers() == 1:
             return 'garde'
-        
         
         # cas oublie...
         return 'petite'  
         
     def chien(self):
         ''' analyse le jeu et joue n cartes au chien '''
+        # obtenir coupe possible ?
+         
+        
         #self.joueur.joueCarte()
         pass
         
