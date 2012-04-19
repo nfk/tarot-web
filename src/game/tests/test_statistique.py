@@ -7,6 +7,7 @@ import unittest
 from partie4joueurs import Partie4Joueurs
 from joueur import Joueur
 from statistique import StatsMainJoueur
+from constantes import TypeCarte
 
 class Test(unittest.TestCase):
 
@@ -24,6 +25,14 @@ class Test(unittest.TestCase):
         partie.addJoueur(joueur4)
         
         stats.calcul(partie.cartes)
+        self.assertEquals(stats.info.nbAtouts, len(TypeCarte.ATOUT))
+        self.assertEquals(stats.info.nbOutdlers, len(TypeCarte.OUTDLERS))
+        self.assertEquals(stats.info.nbRois, len(TypeCarte.COULEUR))
+        for c in TypeCarte.COULEUR.keys():
+            self.assertEquals(stats.info.nbCouleur[c],len(TypeCarte.BASIC))
+        self.assertEquals(stats.info.pourcentAtouts, 100)
+        self.assertEquals(stats.info.pourcentCarteNormale, 100)
+        self.assertEquals(stats.info.pourcentPoints, 100)
         stats.printStats()
         
         partie.distribution()

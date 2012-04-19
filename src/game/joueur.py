@@ -3,7 +3,6 @@ Project : Tarot Web [https://launchpad.net/tarot]
 Author  : nfk
 Date    : 25 oct. 2009
 '''
-from constantes import TypeCarte
 
 class Joueur:
     '''
@@ -46,27 +45,3 @@ class Joueur:
         print '\n'
         for carte in self.cartes:
             print carte.info()
-            
-    def countAtout(self):
-        ''' compte le nombre d atouts '''
-        nb = 0
-        for carte in self.cartes:
-            if carte.couleur == 'atout':
-                nb = nb + 1
-        return nb
-    
-    def countOutdlers(self):
-        ''' compte le nombre d outdlers '''
-        nb = 0
-        for carte in self.cartes:
-            if TypeCarte.OUTDLERS.get(carte.nom) is not None:
-                nb = nb + 1
-        return nb
-          
-    def countRoi(self):
-        ''' compte le nombre de rois '''
-        nb = 0
-        for carte in self.cartes:
-            if carte.nom == 'roi':
-                nb = nb + 1
-        return nb

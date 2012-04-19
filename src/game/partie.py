@@ -6,7 +6,6 @@ Date    : 24 oct. 2009
 
 import random
 
-
 from constantes import TypeCarte
 from constantes import ReglePartie
 from carte import Carte

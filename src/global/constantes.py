@@ -16,18 +16,17 @@ class TypeCarte:
                 'dix': 10,      'valet': 11,    'cavalier': 12,
                 'reine': 13,    'roi': 14}
     
-    # ATOUT : dict {nom : indice carte}
-    ATOUT = {   'petit': 1,     'deux': 2,      'trois': 3,
-                'quatre': 4,    'cinq': 5,      'six': 6,
-                'sept': 7,      'huit': 8,      'neuf': 9,
-                'dix': 10,      'onze': 11,     'douze': 12,
-                'treize': 13,   'quatorze': 14, 'quinze': 15,
-                'seize': 16,    'dix-sept': 17, 'dix-huit': 18,
-                'dix-neuf': 19, 'vingt': 20,    'vingt-et-un': 21,
-                'excuse':0}
-
     # OUTDLERS : dict {nom : indice carte}
     OUTDLERS = {'petit': 1,   'vingt-et-un': 21, 'excuse':0}
+    
+    # ATOUT : dict {nom : indice carte}
+    ATOUT = {   'deux': 2,      'trois': 3,     'quatre': 4,    'cinq': 5,
+                'six': 6,       'sept': 7,      'huit': 8,      'neuf': 9,
+                'dix': 10,      'onze': 11,     'douze': 12,    'treize': 13,
+                'quatorze': 14, 'quinze': 15,   'seize': 16,    'dix-sept': 17, 
+                'dix-huit': 18, 'dix-neuf': 19, 'vingt': 20 }
+    for key, value in OUTDLERS.items():
+        ATOUT[key] = value
 
     # COULEUR : dict {nom : indice}
     COULEUR =  {'pique': 0, 'coeur': 1, 'carreau': 2, 'trefle':3}
@@ -37,10 +36,10 @@ class TypeCarte:
     COULEUR_ET_ATOUT['atout'] = 4
 
     # NB_CARTES : nombre de carte dans un jeu de tarot
-    NB_CARTES = 78
+    NB_CARTES = len(BASIC) * len(COULEUR) + len(ATOUT)
     
     # NB_TETES : nombre de tetes du jeu (valet, cavalier, reine, roi)
-    NB_TETES = 4 * 4
+    NB_TETES = 4 * len(COULEUR)
 
 
 class ReglePartie:

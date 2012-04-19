@@ -12,9 +12,9 @@ class InfoJeu:
     nbOutdlers = 0
     nbAtouts = 0
     nbCouleur = deepcopy(TypeCarte.COULEUR)
-    moyAtouts = 0
-    moyCarteNormale = 0
-    points = 0
+    pourcentAtouts = 0
+    pourcentCarteNormale = 0
+    pourcentPoints = 0
 
 class StatsMainJoueur:
     '''
@@ -46,9 +46,9 @@ class StatsMainJoueur:
         print 'Nombre rois = ' + str(self.info.nbRois)
         for couleur, valeur in self.info.nbCouleur.items():
             print 'Nombre ' + couleur + ' = ' + str(valeur)
-        print 'Atouts = ' + str(self.info.moyAtouts) + '%'
-        print 'Cartes fortes = ' + str(self.info.moyCarteNormale) + '%'
-        print 'Point du jeu = ' + str(self.info.points) + '%'
+        print 'Atouts = ' + str(self.info.pourcentAtouts) + '%'
+        print 'Cartes fortes = ' + str(self.info.pourcentCarteNormale) + '%'
+        print 'Point du jeu = ' + str(self.info.pourcentPoints) + '%'
 
     def __razInfo(self):
         ''' mise a zero des stats'''
@@ -57,9 +57,9 @@ class StatsMainJoueur:
         self.info.nbAtouts = 0
         for couleur in self.info.nbCouleur.keys():
             self.info.nbCouleur[couleur] = 0
-        self.info.moyAtouts = 0
-        self.info.moyCarteNormale = 0
-        self.info.points = 0
+        self.info.pourcentAtouts = 0
+        self.info.pourcentCarteNormale = 0
+        self.info.pourcentPoints = 0
 
     def __countOutdlers(self):
         ''' compte le nombre de bouts dans le jeu '''
@@ -87,7 +87,7 @@ class StatsMainJoueur:
             if carte.couleur is 'atout':
                 atouts.append(carte.valeur)
                 
-        self.info.moyAtouts = sum(atouts)*100 / sum(TypeCarte.ATOUT.values()) 
+        self.info.pourcentAtouts = sum(atouts)*100 / sum(TypeCarte.ATOUT.values()) 
         
     def __pourcentCarteFortes(self):
         ''' valeur moyenne des cartes standard '''
@@ -96,15 +96,15 @@ class StatsMainJoueur:
             if carte.couleur is not 'atout' and carte.point > 0.5:
                 values.append(carte)
               
-        self.info.moyCarteNormale = len(values)*100 / TypeCarte.NB_TETES
+        self.info.pourcentCarteNormale = len(values)*100 / TypeCarte.NB_TETES
                  
     def __pourcentPoint(self):
         ''' valeur en point des cartes '''
-        points = []
+        pourcentPoints = []
         for carte in self.cartes:
-            points.append(carte.point)
+            pourcentPoints.append(carte.point)
         
-        self.info.points = int(sum(points)*100 / ReglePartie.POINT['total'])
+        self.info.pourcentPoints = int(sum(pourcentPoints)*100 / ReglePartie.POINT['total'])
         
     def __countCouleur(self):
         ''' calcul le nombre de cartes dans chaque couleurs '''

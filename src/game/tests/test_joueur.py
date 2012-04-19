@@ -27,11 +27,3 @@ class TestJoueur(unittest.TestCase):
         
         self.assertEquals(j.hasCouleur('atout'), True)
         self.assertEquals(j.hasCouleur('trefle'), False)
-        
-        self.assertEquals(j.countAtout(), 2)
-        self.assertEquals(j.countOutdlers(), 0)
-        self.assertEquals(j.countRoi(), 2)
-        
-        j.addCarte(Carte('excuse', 0, 4.5, 'atout'))
-        self.assertEquals(j.countAtout(), 3)
-        self.assertEquals(j.countOutdlers(), 1)

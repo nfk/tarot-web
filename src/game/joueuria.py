@@ -4,6 +4,8 @@ Author  : nfk
 Date    : 28 dec. 2010
 '''
 
+from statistique import StatsMainJoueur
+
 class JoueurIA:
     '''
     Inteligence artificielle d'un joueur fait pour une partie a 4
@@ -15,39 +17,14 @@ class JoueurIA:
         
     def appel(self):
         ''' analyse du jeu et determine le type d'appel '''
-        #Todo joueur ponderer moyenne atout et moyenne tete du jeu du joueur
         
-        j = self.joueur
+        s = StatsMainJoueur
+        s.calcul(self.joueur.cartes)
         
-        # Si on a pas plus de 4 atouts, 1 roi et 1 bout au minimum, on passe
-        if j.countAtout() < 4 and j.countRoi() < 2 and j.countOutdlers() < 2:
-            return 'passe'
+        s.info.pourcentPoints
         
-        # Si on a 2 rois peu d'atout et un bout
-        if j.countAtout() < 6  and j.countRoi() == 2 and j.countOutdlers() == 1:
-            return 'petite'
         
-        # Si on a 1 roi, des atouts et un bout
-        if j.countAtout() > 6 and j.countAtout() < 9 and j.countRoi() == 1 and\
-            j.countOutdlers() == 1:
-            return 'petite' 
-        
-        # Si on a 2 bouts et un petit jeu
-        if j.countAtout() < 6 and j.countRoi() == 1 and j.countOutdlers() == 2:
-            return 'petite' 
-        
-        # Si on a 2 rois 2 bouts et 4 ou plus d'atouts
-        if j.countAtout() >= 4  and j.countRoi() == 2 and\
-            j.countOutdlers() == 1:
-            return 'garde'
-        
-        # Si on a 2 rois 2 bouts et 4 ou plus d'atouts
-        if j.countAtout() >= 4  and j.countRoi() == 2 and\
-            j.countOutdlers() == 1:
-            return 'garde'
-        
-        # cas oublie...
-        return 'petite'  
+ 
         
     def chien(self):
         ''' analyse le jeu et joue n cartes au chien '''
