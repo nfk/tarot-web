@@ -1,18 +1,18 @@
 '''
-Project : Tarot Web [https://launchpad.net/tarot]
+Project : Tarot Live [https://launchpad.net/tarot]
 Author  : nfk
 Date    : 29 dec. 2010
 '''
 import unittest
 from partie4joueurs import Partie4Joueurs
 from joueur import Joueur
-from statistique import StatsMainJoueur
+from statistique import StatsCartes
 from constantes import TypeCarte
 
 class Test(unittest.TestCase):
 
     def testStats(self):
-        stats = StatsMainJoueur()
+        stats = StatsCartes()
         partie = Partie4Joueurs()
         joueur1 = Joueur('joueur1')
         joueur2 = Joueur('joueur2')

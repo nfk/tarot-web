@@ -1,5 +1,5 @@
 '''
-Project : Tarot Web [https://launchpad.net/tarot]
+Project : Tarot Live [https://launchpad.net/tarot]
 Author  : nfk
 Date    : 25 oct. 2009
 '''

@@ -1,5 +1,5 @@
 '''
-Project : Tarot Web [https://launchpad.net/tarot]
+Project : Tarot Live [https://launchpad.net/tarot]
 Author  : nfk
 Date    : 24 oct. 2009
 '''
@@ -51,9 +51,8 @@ class ReglePartie:
     ENCHERE = {'passe':0, 'petite': 1, 'garde': 2, 'garde_sans': 4, 
                'garde_contre': 8}
 
-    # POINT_CONTRAT : dict {nom : point a atteindre}
-    POINT_CONTRAT = {'sans_bout': 56, 'un_bout': 51, 'deux_bouts': 41, 
-               'trois_bouts': 36}
+    # POINT_CONTRAT : dict {nb : point a atteindre}
+    POINT_CONTRAT = {0:56, 1:51, 2:41, 3:36}
     
     # POIGNEE : dict {nom : nombre d atouts}
     POIGNEE = {'simple': 10, 'double': 13, 'triple': 15}

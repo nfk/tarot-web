@@ -1,5 +1,5 @@
 '''
-Project : Tarot Web [https://launchpad.net/tarot]
+Project : Tarot Live [https://launchpad.net/tarot]
 Author  : nfk
 Date    : 28 dec. 2010
 '''
@@ -16,7 +16,7 @@ class InfoJeu:
     pourcentCarteNormale = 0
     pourcentPoints = 0
 
-class StatsMainJoueur:
+class StatsCartes:
     '''
     information sur le jeu du joueur
     '''
