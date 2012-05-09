@@ -67,3 +67,18 @@ class TestJoueurIA(unittest.TestCase):
             
         self.assertEquals(j.annonce(), 'triple')
         
+    def testChien(self):
+        
+        j = JoueurIA('IA player')
+        
+        j.addCarte(Carte('quatre', 4, 0.5, 'atout'))
+        j.addCarte(Carte('roi', 14, 4.5, 'trefle'))
+        j.addCarte(Carte('roi', 14, 4.5, 'coeur'))
+        j.addCarte(Carte('petit', 1, 4.5, 'atout'))
+        j.addCarte(Carte('valet', 11, 1.5, 'trefle'))
+        j.addCarte(Carte('reine', 13, 3.5, 'trefle'))
+        j.addCarte(Carte('reine', 13, 3.5, 'coeur'))
+        j.addCarte(Carte('quatre', 4, 0.5, 'trefle'))
+        j.addCarte(Carte('quatre', 4, 0.5, 'coeur'))
+        
+        self.assertEquals(j.chien(), None)

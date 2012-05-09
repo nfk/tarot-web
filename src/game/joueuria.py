@@ -64,8 +64,19 @@ class JoueurIA(Joueur):
         s = StatsCartes()
         s.calcul(self.cartes)
         
+        util = Util()
+        
+        cartes = {}
+        
         for couleur in TypeCarte.COULEUR.iterkeys():
-            cartes = Util.getCartesCouleur(self.cartes, couleur)
+            cartes[couleur] = util.getCartesCouleur(self.cartes, couleur)
+            
+            
+        for carte in cartes[couleur]:
+            print carte.info()
+        
+        
+        
         
         
     def annonce(self):
