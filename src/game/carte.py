@@ -23,7 +23,7 @@ class Carte:
     def info(self):
         ''' renvoi une chaine d'info sur la carte '''
         return self.nom + "(" + str(self.valeur) + ") " + self.couleur + \
-                    " - point=" +  str(self.point)
+               " - point=" +  str(self.point)
 
 
         

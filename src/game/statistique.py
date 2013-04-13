@@ -87,7 +87,8 @@ class StatsCartes:
             if carte.couleur is 'atout':
                 atouts.append(carte.valeur)
                 
-        self.info.pourcentAtouts = sum(atouts)*100 / sum(TypeCarte.ATOUT.values()) 
+        self.info.pourcentAtouts = sum(atouts)*100 /\
+                                   sum(TypeCarte.ATOUT.values()) 
         
     def __pourcentCarteFortes(self):
         ''' valeur moyenne des cartes standard '''
@@ -104,7 +105,8 @@ class StatsCartes:
         for carte in self.cartes:
             pourcentPoints.append(carte.point)
         
-        self.info.pourcentPoints = int(sum(pourcentPoints)*100 / ReglePartie.POINT['total'])
+        self.info.pourcentPoints = int(sum(pourcentPoints)*100 /\
+                                       ReglePartie.POINT['total'])
         
     def __countCouleur(self):
         ''' calcul le nombre de cartes dans chaque couleurs '''

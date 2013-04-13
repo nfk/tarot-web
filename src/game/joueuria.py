@@ -17,9 +17,10 @@ class JoueurIA(Joueur):
         ''' Constructeur '''
              
         Joueur.__init__(self, ident)
-             
-        self.algo = { 'petite':0.4, 'garde':0.65, 'garde_sans':0.85, 
-                'garde_contre' : 1}
+        self.algo = { 'petite'      : 0.4, 
+                      'garde'       : 0.65, 
+                      'garde_sans'  : 0.85, 
+                      'garde_contre': 1 }
 
         
     def appel(self):
@@ -74,9 +75,6 @@ class JoueurIA(Joueur):
             
         for carte in cartes[couleur]:
             print carte.info()
-        
-        
-        
         
         
     def annonce(self):

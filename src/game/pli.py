@@ -49,19 +49,20 @@ class Pli:
             return True
 
         # Le joueur joue un atout et n a pas la couleur demandee
-        if carte.couleur is 'atout'\
-                                and joueur.hasCouleur(first.couleur) == False:
+        if carte.couleur is 'atout' and \
+           joueur.hasCouleur(first.couleur) == False:
             # L atout est superieur
             valeurMax = self.__valeurMaxAtouts()
             if carte.valeur > valeurMax:
                 return True   
             # Le joueur fait pipi
-            if carte.valeur < valeurMax and joueur.hasAtoutSuperieur(valeurMax) == False:
+            if carte.valeur < valeurMax and \
+               joueur.hasAtoutSuperieur(valeurMax) == False:
                 return True
         
         # Le joueur n a pas la couleur demandee et pas d atout
-        if joueur.hasCouleur(first.couleur) == False\
-                                    and joueur.hasCouleur('atout') == False :
+        if joueur.hasCouleur(first.couleur) == False and \
+           joueur.hasCouleur('atout') == False :
             return True
         
         return False
@@ -103,7 +104,8 @@ class Pli:
         # recherche la carte gagnante
         for p in self.pli[1:self.nb_joueurs]:
             # carte joue ne correspond a rien
-            if p.carte.couleur != current.couleur and p.carte.couleur !='atout':
+            if p.carte.couleur != current.couleur and \
+               p.carte.couleur !='atout':
                 continue
             
             # la carte a ete coupee
