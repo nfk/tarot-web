@@ -33,10 +33,10 @@ class Test(unittest.TestCase):
         self.assertEquals(stats.info.pourcentAtouts, 100)
         self.assertEquals(stats.info.pourcentCarteNormale, 100)
         self.assertEquals(stats.info.pourcentPoints, 100)
-        stats.printStats()
+        #stats.printStats()
         
         partie.distribution()
         #joueur1.printCartes()
         stats.calcul(joueur1.cartes)
-        stats.printStats()
+        #stats.printStats()
         

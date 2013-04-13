@@ -73,8 +73,8 @@ class JoueurIA(Joueur):
             cartes[couleur] = util.getCartesCouleur(self.cartes, couleur)
             
             
-        for carte in cartes[couleur]:
-            print carte.info()
+        #for carte in cartes[couleur]:
+        #    print carte.info()
         
         
     def annonce(self):
