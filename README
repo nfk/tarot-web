@@ -1,0 +1,11 @@
+# environnement
+export PYTHONPATH=$SRCDIR/game:$SRCDIR/global
+
+# run all unit test
+cd $SRCDIR
+python -m unittest discover -v
+
+# coverage
+python-coverage -x test
+python-coverage -r
+
