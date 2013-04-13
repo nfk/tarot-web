@@ -6,6 +6,7 @@ cd $SRCDIR
 python -m unittest discover -v
 
 # coverage
-python-coverage -x test
-python-coverage -r
+cd $SRCDIR
+python-coverage -x `find -name test_*.py` 
+python-coverage -rm
 
