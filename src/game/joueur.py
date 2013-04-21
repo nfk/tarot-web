@@ -4,11 +4,12 @@ Author  : nfk
 Date    : 25 oct. 2009
 '''
 
+
 class Joueur:
     '''
     definition d un joueur de tarot
     '''
-    
+
     def __init__(self, ident):
         ''' Constructeur '''
         self.identifiant = ident
@@ -32,14 +33,14 @@ class Joueur:
             if carte.couleur == couleur:
                 return True
         return False
-    
+
     def hasAtoutSuperieur(self, valeur):
         ''' le joueur a un atout superieur'''
         for carte in self.cartes:
             if carte.valeur > valeur:
                 return True
         return False
-    
+
     def printCartes(self):
         ''' affiche les cartes du joueur '''
         print '\n'

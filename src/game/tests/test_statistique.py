@@ -9,6 +9,7 @@ from joueur import Joueur
 from statistique import StatsCartes
 from constantes import TypeCarte
 
+
 class Test(unittest.TestCase):
 
     def testStats(self):
@@ -18,25 +19,24 @@ class Test(unittest.TestCase):
         joueur2 = Joueur('joueur2')
         joueur3 = Joueur('joueur3')
         joueur4 = Joueur('joueur4')
-        
+
         partie.addJoueur(joueur1)
         partie.addJoueur(joueur2)
         partie.addJoueur(joueur3)
         partie.addJoueur(joueur4)
-        
+
         stats.calcul(partie.cartes)
         self.assertEquals(stats.info.nbAtouts, len(TypeCarte.ATOUT))
         self.assertEquals(stats.info.nbOutdlers, len(TypeCarte.OUTDLERS))
         self.assertEquals(stats.info.nbRois, len(TypeCarte.COULEUR))
         for c in TypeCarte.COULEUR.keys():
-            self.assertEquals(stats.info.nbCouleur[c],len(TypeCarte.BASIC))
+            self.assertEquals(stats.info.nbCouleur[c], len(TypeCarte.BASIC))
         self.assertEquals(stats.info.pourcentAtouts, 100)
         self.assertEquals(stats.info.pourcentCarteNormale, 100)
         self.assertEquals(stats.info.pourcentPoints, 100)
         #stats.printStats()
-        
+
         partie.distribution()
         #joueur1.printCartes()
         stats.calcul(joueur1.cartes)
         #stats.printStats()
-        

@@ -10,7 +10,7 @@ class TestCarte(unittest.TestCase):
 
     def testCarte(self):
         carte = Carte('quatre', 4, 0.5, 'atout')
-        self.assertEquals(carte.info(), "quatre(4) atout - point=0.5")
+        self.assertEquals(carte.info(), "quatre(4) atout - point = 0.5")
 
     def testName(self):
         carte = Carte('quatre', 4, 0.5, 'atout')
