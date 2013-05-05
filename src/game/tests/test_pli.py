@@ -89,7 +89,7 @@ class TestPli(unittest.TestCase):
         joueur1.joueCarte(0)
         joueur1.joueCarte(6)
 
-        carteAjouer = joueur1.cartes[0]  #quatre de pique
+        carteAjouer = joueur1.cartes[0]  # quatre de pique
         self.assertEquals(pli.controle(carteAjouer, joueur1), True)
 
     def testPliResultat(self):
@@ -103,10 +103,13 @@ class TestPli(unittest.TestCase):
         pli.add(Carte('roi', 14, 4.5, 'coeur'), joueur2)
         pli.add(Carte('quatorze', 14, 0.5, 'atout'), joueur3)
 
-        self.assertRaises(erreur.PliIncomplet,pli.resultat)
+        self.assertRaises(erreur.PliIncomplet, pli.resultat)
 
         pli.add(Carte('dame', 13, 3.5, 'coeur'), joueur4)
 
         pli.resultat()
-        self.assertEquals(pli.point, 4.5+0.5+0.5+3.5)
+        self.assertEquals(pli.point, 4.5 + 0.5 + 0.5 + 3.5)
         self.assertEquals(pli.winner, joueur3)
+
+if __name__ == '__main__':
+    unittest.main()

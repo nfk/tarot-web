@@ -49,3 +49,6 @@ class TestPartie(unittest.TestCase):
         # chaque joueur a le bon nombre de cartes
         for joueur in partie.joueurs:
             self.assertEquals(len(joueur.cartes), 18)
+
+if __name__ == '__main__':
+    unittest.main()

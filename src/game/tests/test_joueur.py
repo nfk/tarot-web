@@ -28,4 +28,5 @@ class TestJoueur(unittest.TestCase):
         self.assertEquals(j.hasCouleur('atout'), True)
         self.assertEquals(j.hasCouleur('trefle'), False)
 
-        j.printCartes()
+if __name__ == '__main__':
+        unittest.main()

@@ -40,3 +40,6 @@ class Test(unittest.TestCase):
         #joueur1.printCartes()
         stats.calcul(joueur1.cartes)
         #stats.printStats()
+
+if __name__ == '__main__':
+    unittest.main()

@@ -81,3 +81,6 @@ class TestJoueurIA(unittest.TestCase):
         j.addCarte(Carte('quatre', 4, 0.5, 'coeur'))
 
         self.assertEquals(j.chien(), None)
+
+if __name__ == '__main__':
+    unittest.main()

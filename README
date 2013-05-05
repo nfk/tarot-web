@@ -1,12 +1,12 @@
+# python module depends unittest2 and coverage 3.5 
+
 # environnement
+SRCDIR=$(pwd)/src
 export PYTHONPATH=$SRCDIR/game:$SRCDIR/global
 
 # run all unit test
-cd $SRCDIR
-python -m unittest discover -v
+python -m unittest discover -v src
 
 # coverage
-cd $SRCDIR
-python-coverage -x `find -name test_*.py` 
-python-coverage -rm
-
+for f in `find -name test_*.py`; do python-coverage run -a $f; done
+python-coverage report -m

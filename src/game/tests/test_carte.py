@@ -6,6 +6,7 @@ Date    : 25 dec. 2010
 import unittest
 from carte import Carte
 
+
 class TestCarte(unittest.TestCase):
 
     def testCarte(self):
@@ -15,3 +16,6 @@ class TestCarte(unittest.TestCase):
     def testName(self):
         carte = Carte('quatre', 4, 0.5, 'atout')
         self.assertEquals(carte.name(), "quatre_atout")
+
+if __name__ == '__main__':
+    unittest.main()
