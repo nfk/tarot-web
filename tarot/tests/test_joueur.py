@@ -4,8 +4,8 @@ Author  : nfk
 Date    : 28 dec. 2010
 '''
 import unittest
-from joueur import Joueur
-from carte import Carte
+from tarot.joueur import Joueur
+from tarot.carte import Carte
 
 
 class TestJoueur(unittest.TestCase):

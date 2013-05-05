@@ -4,10 +4,10 @@ Author  : nfk
 Date    : 29 dec. 2010
 '''
 import unittest
-from partie4joueurs import Partie4Joueurs
-from joueur import Joueur
-from statistique import StatsCartes
-from constantes import TypeCarte
+from tarot.partie4joueurs import Partie4Joueurs
+from tarot.joueur import Joueur
+from tarot.statistique import StatsCartes
+from tarot.constantes import TypeCarte
 
 
 class Test(unittest.TestCase):

@@ -4,7 +4,7 @@ Author  : nfk
 Date    : 25 dec. 2010
 '''
 import unittest
-from carte import Carte
+from tarot.carte import Carte
 
 
 class TestCarte(unittest.TestCase):

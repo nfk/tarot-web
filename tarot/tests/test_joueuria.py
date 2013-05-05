@@ -4,9 +4,9 @@ Author  : nfk
 Date    : 2 mai 2012
 '''
 import unittest
-from joueuria import JoueurIA
-from carte import Carte
-from constantes import ReglePartie
+from tarot.joueuria import JoueurIA
+from tarot.carte import Carte
+from tarot.constantes import ReglePartie
 
 
 class TestJoueurIA(unittest.TestCase):

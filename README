@@ -1,11 +1,10 @@
-# python module depends unittest2 and coverage 3.5 
+# The foolowing commands depends topython module unittest2 and coverage 3.5 
 
 # environnement
-SRCDIR=$(pwd)/src
-export PYTHONPATH=$SRCDIR/game:$SRCDIR/global
+export PYTHONPATH=$(pwd)
 
 # run all unit test
-python -m unittest discover -v src
+python -m unittest discover -v 
 
 # coverage
 for f in `find -name test_*.py`; do python-coverage run -a $f; done

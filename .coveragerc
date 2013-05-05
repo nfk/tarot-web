@@ -2,4 +2,4 @@
 [run]
 omit = 
     /usr/share/pyshared/coverage/*
-    src/game/tests/*
+    tarot/tests/*

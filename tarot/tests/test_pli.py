@@ -4,10 +4,10 @@ Author  : nfk
 Date    : 17 dec. 2010
 '''
 import unittest
-import erreur
-from joueur import Joueur
-from pli import Pli
-from carte import Carte
+from tarot import erreur
+from tarot.joueur import Joueur
+from tarot.pli import Pli
+from tarot.carte import Carte
 
 
 class TestPli(unittest.TestCase):

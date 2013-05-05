@@ -6,10 +6,10 @@ Date    : 25 oct. 2009
 
 import unittest
 
-from constantes import TypeCarte
-from partie4joueurs import Partie4Joueurs
-from joueur import Joueur
-import erreur
+from tarot.constantes import TypeCarte
+from tarot.partie4joueurs import Partie4Joueurs
+from tarot.joueur import Joueur
+from tarot import erreur
 
 
 class TestPartie(unittest.TestCase):
