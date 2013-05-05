@@ -7,28 +7,27 @@ Date    : 25 oct. 2009
 
 class Joueur:
     '''
-    definition d un joueur de tarot
+    This class defined all action of player
     '''
 
     def __init__(self, ident):
-        ''' Constructeur '''
         self.identifiant = ident
         self.score = 0
         self.prise = 'passe'
         self.cartes = []
 
     def joueCarte(self, index):
-        ''' retourne une carte et supprime la carte du joueur '''
+        ''' remove card and return it '''
         carte = self.cartes[index]
         self.cartes.remove(carte)
         return carte
 
     def addCarte(self, carte):
-        ''' ajoute une carte au joueur '''
+        ''' add card to player '''
         self.cartes.append(carte)
 
     def hasCouleur(self, couleur):
-        ''' le joueur a la couleur dans son jeu '''
+        ''' check if the player has a card in him game '''
         for carte in self.cartes:
             if carte.couleur == couleur:
                 return True
@@ -41,8 +40,9 @@ class Joueur:
                 return True
         return False
 
-    def printCartes(self):
-        ''' affiche les cartes du joueur '''
-        print '\n'
+    def __str__(self):
+        ''' return string of player's cards'''
+        s = ''
         for carte in self.cartes:
-            print carte.info()
+            s = '%s\n%s' % (s, str(carte))
+        return s

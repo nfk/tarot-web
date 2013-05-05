@@ -40,18 +40,6 @@ class StatsCartes:
         self.__pourcentCarteFortes()
         self.__pourcentPoint()
 
-    def printStats(self):
-        ''' affiche les stats du jeu '''
-        print '\n ___________________________________'
-        print 'Nombre atouts = ' + str(self.info.nbAtouts)
-        print 'Nombre outdlers = ' + str(self.info.nbOutdlers)
-        print 'Nombre rois = ' + str(self.info.nbRois)
-        for couleur, valeur in self.info.nbCouleur.items():
-            print 'Nombre ' + couleur + ' = ' + str(valeur)
-        print 'Atouts = ' + str(self.info.pourcentAtouts) + '%'
-        print 'Cartes fortes = ' + str(self.info.pourcentCarteNormale) + '%'
-        print 'Point du jeu = ' + str(self.info.pourcentPoints) + '%'
-
     def __razInfo(self):
         ''' mise a zero des stats'''
         self.info.nbRois = 0

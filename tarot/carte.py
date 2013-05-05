@@ -6,22 +6,19 @@ Date    : 25 oct. 2009
 
 
 class Carte:
-    '''
-    carte de tarot
-    '''
+    ''' card of tarot '''
 
     def __init__(self, nom, valeur, point, couleur):
-        ''' Constructeur '''
-        self.nom = str(nom)
+        self.nom = nom
         self.valeur = int(valeur)
         self.point = float(point)
-        self.couleur = str(couleur)
+        self.couleur = couleur
 
     def name(self):
-        ''' renvoi le nom de la carte'''
+        ''' return name of card '''
         return '%s_%s' % (self.nom, self.couleur)
 
-    def info(self):
-        ''' renvoi une chaine d'info sur la carte '''
-        return "%s(%d) %s - point = %.1f" % (self.nom, self.valeur,
+    def __str__(self):
+        ''' return string with card attributes'''
+        return '%s(%d) %s - point = %.1f' % (self.nom, self.valeur,
                                              self.couleur, self.point)

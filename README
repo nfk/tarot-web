@@ -6,6 +6,6 @@ export PYTHONPATH=$(pwd)
 # run all unit test
 python -m unittest discover -v 
 
-# coverage
+# run coverage
 for f in `find -name test_*.py`; do python-coverage run -a $f; done
 python-coverage report -m

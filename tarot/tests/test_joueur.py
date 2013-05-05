@@ -11,22 +11,31 @@ from tarot.carte import Carte
 class TestJoueur(unittest.TestCase):
 
     def testJoueur(self):
+        cards = [
+            Carte('quatre', 4, 0.5, 'atout'),
+            Carte('quatorze', 14, 0.5, 'atout'),
+            Carte('quatre', 4, 0.5, 'pique'),
+            Carte('six', 6, 0.5, 'pique'),
+            Carte('roi', 14, 4.5, 'pique'),
+            Carte('roi', 14, 4.5, 'coeur'),
+            Carte('reine', 13, 3.5, 'coeur'),
+            Carte('as', 1, 0.5, 'coeur')
+        ]
+
         j = Joueur('test')
-        j.addCarte(Carte('quatre', 4, 0.5, 'atout'))
-        j.addCarte(Carte('quatorze', 14, 0.5, 'atout'))
-        j.addCarte(Carte('quatre', 4, 0.5, 'pique'))
-        j.addCarte(Carte('six', 6, 0.5, 'pique'))
-        j.addCarte(Carte('roi', 14, 4.5, 'pique'))
-        j.addCarte(Carte('roi', 14, 4.5, 'coeur'))
-        j.addCarte(Carte('reine', 13, 3.5, 'coeur'))
-        j.addCarte(Carte('as', 1, 0.5, 'coeur'))
+        strGame = ''
+        for c in cards:
+            j.addCarte(c)
+            strGame = '%s\n%s' % (strGame, str(c))
 
-        self.assertEquals(j.hasAtoutSuperieur(15), False)
-        self.assertEquals(j.hasAtoutSuperieur(14), False)
-        self.assertEquals(j.hasAtoutSuperieur(13), True)
+        self.assertFalse(j.hasAtoutSuperieur(15))
+        self.assertFalse(j.hasAtoutSuperieur(14))
+        self.assertTrue(j.hasAtoutSuperieur(13))
 
-        self.assertEquals(j.hasCouleur('atout'), True)
-        self.assertEquals(j.hasCouleur('trefle'), False)
+        self.assertTrue(j.hasCouleur('atout'))
+        self.assertFalse(j.hasCouleur('trefle'))
+
+        self.assertTrue(str(j) == strGame)
 
 if __name__ == '__main__':
         unittest.main()

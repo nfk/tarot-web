@@ -89,6 +89,3 @@ class JoueurIA(Joueur):
             return 'double'
 
         return 'triple'
-
-    def joue(self):
-        pass

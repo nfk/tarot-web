@@ -11,11 +11,11 @@ class TestCarte(unittest.TestCase):
 
     def testCarte(self):
         carte = Carte('quatre', 4, 0.5, 'atout')
-        self.assertEquals(carte.info(), "quatre(4) atout - point = 0.5")
+        self.assertTrue(str(carte) == 'quatre(4) atout - point = 0.5')
 
     def testName(self):
         carte = Carte('quatre', 4, 0.5, 'atout')
-        self.assertEquals(carte.name(), "quatre_atout")
+        self.assertTrue(carte.name() == 'quatre_atout')
 
 if __name__ == '__main__':
     unittest.main()
