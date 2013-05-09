@@ -3,7 +3,6 @@ Project : Tarot Web [https://github.com/nfk/tarot-web]
 Author  : nfk
 Date    : 17 dec. 2010
 '''
-import erreur
 from collections import namedtuple
 
 
@@ -13,7 +12,6 @@ class Pli:
     '''
 
     def __init__(self):
-        ''' Constructeur '''
         self.pli = []
         self.Couple = namedtuple('Couple', 'carte joueur')
         self.nb_joueurs = 4
@@ -25,14 +23,14 @@ class Pli:
         ''' ajout d une carte au pli '''
 
         if len(self.pli) == self.nb_joueurs:
-            raise erreur.PliComplet()
+            raise Exception('Pli Complet')
 
         if len(self.pli) > 0:
             for p in self.pli:
                 if p.carte == carte:
-                    raise erreur.PliCarteDejaJouee
+                    raise Exception('Pli Carte Deja Jouee')
                 if p.joueur == joueur:
-                    raise erreur.PliJoueurADejaJoue
+                    raise Exception('Pli Joueur A Deja Joue')
 
         self.pli.append(self.Couple(carte, joueur))
 
@@ -97,7 +95,7 @@ class Pli:
     def resultat(self):
         ''' recherche le vainqueur du pli et calcul le nombre de points '''
         if len(self.pli) < self.nb_joueurs:
-            raise erreur.PliIncomplet()
+            raise Exception('Pli Incomplet')
 
         current = self.__firstCarte()
 

@@ -6,11 +6,8 @@ Date    : 24 oct. 2009
 
 import random
 
-from constantes import TypeCarte
-from constantes import ReglePartie
+import constantes
 from carte import Carte
-
-import erreur
 
 
 class Partie:
@@ -19,7 +16,6 @@ class Partie:
     '''
 
     def __init__(self, nbJoueurs, nbCarteAuChien):
-        ''' Constructor '''
         # constante
         self.__NB_CARTES_AU_CHIEN = nbCarteAuChien
         self.__NB_JOUEURS = nbJoueurs
@@ -34,24 +30,24 @@ class Partie:
 
     def __creationJeu(self):
         ''' creation du jeu de tarot '''
-        for couleur in TypeCarte.COULEUR_ET_ATOUT.iterkeys():
-            iterCartes = TypeCarte.BASIC.items()
+        for couleur in constantes.COULEUR_ET_ATOUT.iterkeys():
+            iterCartes = constantes.BASIC.items()
             if couleur == 'atout':
-                iterCartes = TypeCarte.ATOUT.items()
+                iterCartes = constantes.ATOUT.items()
 
             for nom, valeur in iterCartes:
-                point = ReglePartie.POINT.get(nom)
-                if TypeCarte.OUTDLERS.get(nom) is not None:
-                    point = ReglePartie.POINT['outdler']
+                point = constantes.POINT.get(nom)
+                if constantes.OUTDLERS.get(nom) is not None:
+                    point = constantes.POINT['outdler']
                 if point is None:
-                    point = ReglePartie.POINT['base']
+                    point = constantes.POINT['base']
                 self.cartes.append(Carte(nom, valeur, point, couleur))
 
     def addJoueur(self, joueur):
         '''ajout d un joueur a la partie'''
 
         if len(self.joueurs) == self.__NB_JOUEURS:
-            raise erreur.MaxJoueursAtteint()
+            raise Exception('Max joueurs atteint')
 
         self.joueurs.append(joueur)
 
@@ -64,7 +60,7 @@ class Partie:
 
         # la partie a tous ces joueurs
         if len(self.joueurs) != self.__NB_JOUEURS:
-            raise erreur.ManqueJoueurs()
+            raise Exception('Manque joueurs')
 
         # on fait d abord le chien
         while len(self.cartesAuChien) < self.__NB_CARTES_AU_CHIEN:

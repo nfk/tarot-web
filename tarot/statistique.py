@@ -3,8 +3,7 @@ Project : Tarot Web [https://github.com/nfk/tarot-web]
 Author  : nfk
 Date    : 28 dec. 2010
 '''
-from constantes import TypeCarte
-from constantes import ReglePartie
+import constantes
 from copy import deepcopy
 
 
@@ -12,7 +11,7 @@ class InfoJeu:
     nbRois = 0
     nbOutdlers = 0
     nbAtouts = 0
-    nbCouleur = deepcopy(TypeCarte.COULEUR)
+    nbCouleur = deepcopy(constantes.COULEUR)
     pourcentAtouts = 0
     pourcentCarteNormale = 0
     pourcentPoints = 0
@@ -55,7 +54,7 @@ class StatsCartes:
         ''' compte le nombre de bouts dans le jeu '''
         for carte in self.cartes:
             if carte.couleur is 'atout':
-                if TypeCarte.OUTDLERS.values().count(carte.valeur) > 0:
+                if constantes.OUTDLERS.values().count(carte.valeur) > 0:
                     self.info.nbOutdlers += 1
 
     def __countAtout(self):
@@ -78,7 +77,7 @@ class StatsCartes:
                 atouts.append(carte.valeur)
 
         self.info.pourcentAtouts = (sum(atouts) * 100 /
-                                    sum(TypeCarte.ATOUT.values()))
+                                    sum(constantes.ATOUT.values()))
 
     def __pourcentCarteFortes(self):
         ''' valeur moyenne des cartes standard '''
@@ -87,7 +86,8 @@ class StatsCartes:
             if carte.couleur is not 'atout' and carte.point > 0.5:
                 values.append(carte)
 
-        self.info.pourcentCarteNormale = len(values) * 100 / TypeCarte.NB_TETES
+        self.info.pourcentCarteNormale = (len(values) * 100 /
+                                          constantes.NB_TETES)
 
     def __pourcentPoint(self):
         ''' valeur en point des cartes '''
@@ -96,10 +96,10 @@ class StatsCartes:
             pourcentPoints.append(carte.point)
 
         self.info.pourcentPoints = int(sum(pourcentPoints) * 100 /
-                                       ReglePartie.POINT['total'])
+                                       constantes.POINT['total'])
 
     def __countCouleur(self):
         ''' calcul le nombre de cartes dans chaque couleurs '''
         for carte in self.cartes:
-            if carte.couleur in TypeCarte.COULEUR:
+            if carte.couleur in constantes.COULEUR:
                 self.info.nbCouleur[carte.couleur] += 1

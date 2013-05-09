@@ -6,7 +6,7 @@ Date    : 2 mai 2012
 import unittest
 from tarot.joueuria import JoueurIA
 from tarot.carte import Carte
-from tarot.constantes import ReglePartie
+import tarot.constantes as constantes
 
 
 class TestJoueurIA(unittest.TestCase):
@@ -49,19 +49,19 @@ class TestJoueurIA(unittest.TestCase):
 
         self.assertEquals(j.annonce(), None)
 
-        for i in range(ReglePartie.POIGNEE['simple']):
+        for i in range(constantes.POIGNEE['simple']):
             j.addCarte(Carte("unknown", i, 0.5, 'atout'))
 
         self.assertEquals(j.annonce(), 'simple')
 
         for i in range(
-                ReglePartie.POIGNEE['simple'], ReglePartie.POIGNEE['double']):
+                constantes.POIGNEE['simple'], constantes.POIGNEE['double']):
             j.addCarte(Carte("unknown", i, 0.5, 'atout'))
 
         self.assertEquals(j.annonce(), 'double')
 
         for i in range(
-                ReglePartie.POIGNEE['double'], ReglePartie.POIGNEE['triple']):
+                constantes.POIGNEE['double'], constantes.POIGNEE['triple']):
             j.addCarte(Carte("unknown", i, 0.5, 'atout'))
 
         self.assertEquals(j.annonce(), 'triple')

@@ -7,7 +7,7 @@ import unittest
 from tarot.partie4joueurs import Partie4Joueurs
 from tarot.joueur import Joueur
 from tarot.statistique import StatsCartes
-from tarot.constantes import TypeCarte
+import tarot.constantes as constantes
 
 
 class Test(unittest.TestCase):
@@ -26,11 +26,11 @@ class Test(unittest.TestCase):
         partie.addJoueur(joueur4)
 
         stats.calcul(partie.cartes)
-        self.assertEquals(stats.info.nbAtouts, len(TypeCarte.ATOUT))
-        self.assertEquals(stats.info.nbOutdlers, len(TypeCarte.OUTDLERS))
-        self.assertEquals(stats.info.nbRois, len(TypeCarte.COULEUR))
-        for c in TypeCarte.COULEUR.keys():
-            self.assertEquals(stats.info.nbCouleur[c], len(TypeCarte.BASIC))
+        self.assertEquals(stats.info.nbAtouts, len(constantes.ATOUT))
+        self.assertEquals(stats.info.nbOutdlers, len(constantes.OUTDLERS))
+        self.assertEquals(stats.info.nbRois, len(constantes.COULEUR))
+        for c in constantes.COULEUR.keys():
+            self.assertEquals(stats.info.nbCouleur[c], len(constantes.BASIC))
         self.assertEquals(stats.info.pourcentAtouts, 100)
         self.assertEquals(stats.info.pourcentCarteNormale, 100)
         self.assertEquals(stats.info.pourcentPoints, 100)

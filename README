@@ -1,4 +1,4 @@
-# The foolowing commands depends topython module unittest2 and coverage 3.5 
+# The following commands depends to python module unittest2 and coverage 3.5 
 
 # environnement
 export PYTHONPATH=$(pwd)

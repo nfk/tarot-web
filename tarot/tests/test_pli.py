@@ -4,7 +4,6 @@ Author  : nfk
 Date    : 17 dec. 2010
 '''
 import unittest
-from tarot import erreur
 from tarot.joueur import Joueur
 from tarot.pli import Pli
 from tarot.carte import Carte
@@ -22,16 +21,16 @@ class TestPli(unittest.TestCase):
 
         carte = Carte('quatre', 4, 0.5, 'atout')
         self.assertEquals(pli.add(carte, joueur1), None)
-        self.assertRaises(erreur.PliCarteDejaJouee, pli.add, carte, joueur2)
+        self.assertRaises(Exception, pli.add, carte, joueur2)
         self.assertEquals(pli.add(Carte('cinq', 5, 0.5, 'atout'), joueur2),
                           None)
         self.assertEquals(pli.add(Carte('quatre', 4, 0.5, 'pique'), joueur3),
                           None)
-        self.assertRaises(erreur.PliJoueurADejaJoue, pli.add,
+        self.assertRaises(Exception, pli.add,
                           Carte('quatre', 4, 0.5, 'pique'), joueur3)
         self.assertEquals(pli.add(Carte('roi', 14, 4.5, 'coeur'), joueur4),
                           None)
-        self.assertRaises(erreur.PliComplet, pli.add,
+        self.assertRaises(Exception, pli.add,
                           Carte('reine', 13, 3.5, 'coeur'), joueur5)
 
     def testPliControle(self):
@@ -103,7 +102,7 @@ class TestPli(unittest.TestCase):
         pli.add(Carte('roi', 14, 4.5, 'coeur'), joueur2)
         pli.add(Carte('quatorze', 14, 0.5, 'atout'), joueur3)
 
-        self.assertRaises(erreur.PliIncomplet, pli.resultat)
+        self.assertRaises(Exception, pli.resultat)
 
         pli.add(Carte('dame', 13, 3.5, 'coeur'), joueur4)
 

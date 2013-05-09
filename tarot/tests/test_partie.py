@@ -6,17 +6,16 @@ Date    : 25 oct. 2009
 
 import unittest
 
-from tarot.constantes import TypeCarte
+import tarot.constantes as constantes
 from tarot.partie4joueurs import Partie4Joueurs
 from tarot.joueur import Joueur
-from tarot import erreur
 
 
 class TestPartie(unittest.TestCase):
 
     def testCartes(self):
         partie = Partie4Joueurs()
-        self.assertEquals(len(partie.cartes), TypeCarte.NB_CARTES)
+        self.assertEquals(len(partie.cartes), constantes.NB_CARTES)
 
     def testAddJoueurs(self):
         partie = Partie4Joueurs()
@@ -27,13 +26,13 @@ class TestPartie(unittest.TestCase):
         self.assertEquals(len(partie.joueurs), 4)
 
         j = Joueur("newJoueur")
-        self.assertRaises(erreur.MaxJoueursAtteint, partie.addJoueur, j)
+        self.assertRaises(Exception, partie.addJoueur, j)
 
     def testDistribution(self):
         partie = Partie4Joueurs()
 
         # distrib sans add joueur
-        self.assertRaises(erreur.ManqueJoueurs, partie.distribution)
+        self.assertRaises(Exception, partie.distribution)
 
         # add des 4 joueurs
         for i in range(4):

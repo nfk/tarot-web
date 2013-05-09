@@ -3,7 +3,7 @@ Project : Tarot Web [https://github.com/nfk/tarot-web]
 Author  : nfk
 Date    : 28 dec. 2010
 '''
-from constantes import ReglePartie, TypeCarte
+import constantes
 from util import Util
 from statistique import StatsCartes
 from joueur import Joueur
@@ -28,9 +28,9 @@ class JoueurIA(Joueur):
         s.calcul(self.cartes)
 
         points = s.info.pourcentPoints
-        objPoints = ReglePartie.POINT_CONTRAT[s.info.nbOutdlers]
+        objPoints = constantes.POINT_CONTRAT[s.info.nbOutdlers]
 
-        limit = (objPoints * 100) / ReglePartie.POINT['total']
+        limit = (objPoints * 100) / constantes.POINT['total']
 
         # passe
         if points < limit * self.algo['petite']:
@@ -66,7 +66,7 @@ class JoueurIA(Joueur):
 
         cartes = {}
 
-        for couleur in TypeCarte.COULEUR.iterkeys():
+        for couleur in constantes.COULEUR.iterkeys():
             cartes[couleur] = util.getCartesCouleur(self.cartes, couleur)
 
         #for carte in cartes[couleur]:
@@ -77,15 +77,15 @@ class JoueurIA(Joueur):
         s = StatsCartes()
         s.calcul(self.cartes)
 
-        if s.info.nbAtouts < ReglePartie.POIGNEE['simple']:
+        if s.info.nbAtouts < constantes.POIGNEE['simple']:
             return None
 
-        if (s.info.nbAtouts >= ReglePartie.POIGNEE['simple'] and
-                s.info.nbAtouts < ReglePartie.POIGNEE['double']):
+        if (s.info.nbAtouts >= constantes.POIGNEE['simple'] and
+                s.info.nbAtouts < constantes.POIGNEE['double']):
             return 'simple'
 
-        if (s.info.nbAtouts >= ReglePartie.POIGNEE['double'] and
-                s.info.nbAtouts < ReglePartie.POIGNEE['triple']):
+        if (s.info.nbAtouts >= constantes.POIGNEE['double'] and
+                s.info.nbAtouts < constantes.POIGNEE['triple']):
             return 'double'
 
         return 'triple'
