@@ -7,7 +7,7 @@ Date    : 25 oct. 2009
 import unittest
 
 import tarot.constantes as constantes
-from tarot.partie4joueurs import Partie4Joueurs
+from tarot.partie import Partie4Joueurs
 from tarot.joueur import Joueur
 
 

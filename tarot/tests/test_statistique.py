@@ -4,7 +4,7 @@ Author  : nfk
 Date    : 29 dec. 2010
 '''
 import unittest
-from tarot.partie4joueurs import Partie4Joueurs
+from tarot.partie import Partie4Joueurs
 from tarot.joueur import Joueur
 from tarot.statistique import StatsCartes
 import tarot.constantes as constantes

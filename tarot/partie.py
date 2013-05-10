@@ -10,7 +10,7 @@ import constantes
 from carte import Carte
 
 
-class Partie:
+class Partie(object):
     '''
     ensemble des cartes du jeu de tarot
     '''
@@ -74,3 +74,11 @@ class Partie:
                 carte = random.choice(cartesTmp)
                 joueur.addCarte(carte)
                 cartesTmp.remove(carte)
+
+
+class Partie4Joueurs(Partie):
+    '''
+    Partie de tarot pour 4 joueurs
+    '''
+    def __init__(self):
+        super(Partie4Joueurs, self).__init__(nbJoueurs=4, nbCarteAuChien=6)
