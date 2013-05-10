@@ -4,7 +4,7 @@ Author  : nfk
 Date    : 28 dec. 2010
 '''
 import constantes
-from util import Util
+import util
 from statistique import StatsCartes
 from joueur import Joueur
 
@@ -15,8 +15,6 @@ class JoueurIA(Joueur):
     '''
 
     def __init__(self, ident):
-        ''' Constructeur '''
-
         Joueur.__init__(self, ident)
         self.algo = {'petite': 0.4, 'garde': 0.65, 'garde_sans': 0.85,
                      'garde_contre': 1}
@@ -62,15 +60,10 @@ class JoueurIA(Joueur):
         s = StatsCartes()
         s.calcul(self.cartes)
 
-        util = Util()
-
         cartes = {}
 
         for couleur in constantes.COULEUR.iterkeys():
             cartes[couleur] = util.getCartesCouleur(self.cartes, couleur)
-
-        #for carte in cartes[couleur]:
-        #    print carte.info()
 
     def annonce(self):
         ''' le joueur peut faire des annonces '''

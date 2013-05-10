@@ -5,7 +5,7 @@ Date    : 25 oct. 2009
 '''
 
 
-class Joueur:
+class Joueur(object):
     '''
     This class defined all action of player
     '''
@@ -27,7 +27,7 @@ class Joueur:
         self.cartes.append(carte)
 
     def hasCouleur(self, couleur):
-        ''' check if the player has a card in him game '''
+        ''' check if the player has a card in his game '''
         for carte in self.cartes:
             if carte.couleur == couleur:
                 return True
