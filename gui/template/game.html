@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>The game table of tarot</h1>
+    {% for j in party.joueurs %}
+        <h2>{{ j.identifiant }}</h2>
+        <ul>
+            {% for c in j.cartes %}
+                <li>{{ c }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}    
+{% endblock %}
