@@ -1,11 +1,14 @@
-# The following commands depends to python module unittest2 and coverage 3.5 
+# The project depends of
+- python 2.7
+- coverage 3.5
+- django 1.5.1
 
-# environnement
+# Environnement
 export PYTHONPATH=$(pwd)
 
-# run all unit test
+# Run all unit test
 python -m unittest discover -v 
 
-# run coverage
+# Run coverage
 for f in `find -name test_*.py`; do python-coverage run -a $f; done
 python-coverage report -m
