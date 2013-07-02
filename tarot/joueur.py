@@ -26,17 +26,17 @@ class Joueur(object):
         ''' add card to player '''
         self.cartes.append(carte)
 
-    def hasCouleur(self, couleur):
+    def hasCouleur(self, color):
         ''' check if the player has a card in his game '''
         for carte in self.cartes:
-            if carte.couleur == couleur:
+            if carte.color == color:
                 return True
         return False
 
-    def hasAtoutSuperieur(self, valeur):
+    def hasAtoutSuperieur(self, value):
         ''' le joueur a un atout superieur'''
         for carte in self.cartes:
-            if carte.valeur > valeur:
+            if carte.value > value:
                 return True
         return False
 

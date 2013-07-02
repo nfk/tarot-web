@@ -44,8 +44,8 @@ class StatsCartes:
         self.info.nbRois = 0
         self.info.nbOutdlers = 0
         self.info.nbAtouts = 0
-        for couleur in self.info.nbCouleur.keys():
-            self.info.nbCouleur[couleur] = 0
+        for color in self.info.nbCouleur.keys():
+            self.info.nbCouleur[color] = 0
         self.info.pourcentAtouts = 0
         self.info.pourcentCarteNormale = 0
         self.info.pourcentPoints = 0
@@ -53,28 +53,28 @@ class StatsCartes:
     def __countOutdlers(self):
         ''' compte le nombre de bouts dans le jeu '''
         for carte in self.cartes:
-            if carte.couleur is 'atout':
-                if constantes.OUTDLERS.values().count(carte.valeur) > 0:
+            if carte.color is 'atout':
+                if constantes.OUTDLERS.values().count(carte.value) > 0:
                     self.info.nbOutdlers += 1
 
     def __countAtout(self):
         ''' compte le nombre d'atout dans le jeu '''
         for carte in self.cartes:
-            if carte.couleur is 'atout':
+            if carte.color is 'atout':
                 self.info.nbAtouts += 1
 
     def __countRoi(self):
         ''' compte le nombre de roi dans le jeu '''
         for carte in self.cartes:
-            if carte.nom is 'roi':
+            if carte.name is 'roi':
                 self.info.nbRois += 1
 
     def __pourcentAtouts(self):
         ''' valeur moyenne des atouts'''
         atouts = []
         for carte in self.cartes:
-            if carte.couleur is 'atout':
-                atouts.append(carte.valeur)
+            if carte.color is 'atout':
+                atouts.append(carte.value)
 
         self.info.pourcentAtouts = (sum(atouts) * 100 /
                                     sum(constantes.ATOUT.values()))
@@ -83,7 +83,7 @@ class StatsCartes:
         ''' valeur moyenne des cartes standard '''
         values = []
         for carte in self.cartes:
-            if carte.couleur is not 'atout' and carte.point > 0.5:
+            if carte.color is not 'atout' and carte.point > 0.5:
                 values.append(carte)
 
         self.info.pourcentCarteNormale = (len(values) * 100 /
@@ -99,7 +99,7 @@ class StatsCartes:
                                        constantes.POINT['total'])
 
     def __countCouleur(self):
-        ''' calcul le nombre de cartes dans chaque couleurs '''
+        ''' calcul le nombre de cartes dans chaque colors '''
         for carte in self.cartes:
-            if carte.couleur in constantes.COULEUR:
-                self.info.nbCouleur[carte.couleur] += 1
+            if carte.color in constantes.COULEUR:
+                self.info.nbCouleur[carte.color] += 1

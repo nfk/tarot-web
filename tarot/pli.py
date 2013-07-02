@@ -43,24 +43,24 @@ class Pli:
         if first is None:
             return True
 
-        # La carte est de la meme couleur
-        if carte.couleur == first.couleur and carte.couleur != 'atout':
+        # La carte est de la meme color
+        if carte.color == first.color and carte.color != 'atout':
             return True
 
-        # Le joueur joue un atout et n a pas la couleur demandee
-        if (carte.couleur is 'atout' and
-                joueur.hasCouleur(first.couleur) is False):
+        # Le joueur joue un atout et n a pas la color demandee
+        if (carte.color is 'atout' and
+                joueur.hasCouleur(first.color) is False):
             # L atout est superieur
             valeurMax = self.__valeurMaxAtouts()
-            if carte.valeur > valeurMax:
+            if carte.value > valeurMax:
                 return True
             # Le joueur fait pipi
-            if (carte.valeur < valeurMax and
+            if (carte.value < valeurMax and
                     joueur.hasAtoutSuperieur(valeurMax) is False):
                 return True
 
-        # Le joueur n a pas la couleur demandee et pas d atout
-        if (joueur.hasCouleur(first.couleur) is False and
+        # Le joueur n a pas la color demandee et pas d atout
+        if (joueur.hasCouleur(first.color) is False and
                 joueur.hasCouleur('atout') is False):
             return True
 
@@ -74,7 +74,7 @@ class Pli:
 
         # La reference du controle c est la premiere carte
         # sauf si c est l excuse
-        if self.pli[0].carte.nom == 'excuse':
+        if self.pli[0].carte.name == 'excuse':
             if len(self.pli) >= 2:
                 return self.pli[1].carte
         else:
@@ -87,8 +87,8 @@ class Pli:
         ''' recherche la valeur max des atouts presents dans le pli '''
         valeurMax = 0
         for p in self.pli:
-            if p.carte.couleur is 'atout' and p.carte.valeur > valeurMax:
-                valeurMax = p.carte.valeur
+            if p.carte.color is 'atout' and p.carte.value > valeurMax:
+                valeurMax = p.carte.value
 
         return valeurMax
 
@@ -102,17 +102,17 @@ class Pli:
         # recherche la carte gagnante
         for p in self.pli[1:self.nb_joueurs]:
             # carte joue ne correspond a rien
-            if (p.carte.couleur != current.couleur and
-                    p.carte.couleur != 'atout'):
+            if (p.carte.color != current.color and
+                    p.carte.color != 'atout'):
                 continue
 
             # la carte a ete coupee
-            if p.carte.couleur != current.couleur:
+            if p.carte.color != current.color:
                 current = p.carte
                 continue
 
-            # la carte est de la meme couleur on compare la valeur
-            if p.carte.valeur > current.valeur:
+            # la carte est de la meme color on compare la valeur
+            if p.carte.value > current.value:
                 current = p.carte
                 continue
 

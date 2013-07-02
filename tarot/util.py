@@ -5,10 +5,10 @@ Date    : 29 avr. 2012
 '''
 
 
-def getCartesCouleur(cartes, couleur):
+def getCartesCouleur(cartes, color):
     ''' renvoi la liste des cartes corespondant a la couleur '''
     retCartes = []
     for carte in cartes:
-        if carte.couleur == couleur:
+        if carte.color == color:
             retCartes.append(carte)
     return retCartes

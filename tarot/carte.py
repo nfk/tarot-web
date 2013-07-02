@@ -8,17 +8,14 @@ Date    : 25 oct. 2009
 class Carte:
     ''' card of tarot '''
 
-    def __init__(self, nom, valeur, point, couleur):
-        self.nom = nom
-        self.valeur = int(valeur)
+    def __init__(self, name, value, point, color):
+        self.id = 0;
+        self.name = name
+        self.value = int(value)
         self.point = float(point)
-        self.couleur = couleur
-
-    def name(self):
-        ''' return name of card '''
-        return '%s_%s' % (self.nom, self.couleur)
+        self.color = color
 
     def __str__(self):
         ''' return string with card attributes'''
-        return '%s(%d) %s - point = %.1f' % (self.nom, self.valeur,
-                                             self.couleur, self.point)
+        return '%s(%d) %s - point = %.1f' % (self.name, self.value,
+                                             self.color, self.point)
