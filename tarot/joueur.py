@@ -3,7 +3,7 @@ Project : Tarot Web [https://github.com/nfk/tarot-web]
 Author  : nfk
 Date    : 25 oct. 2009
 '''
-
+import json
 
 class Joueur(object):
     '''
@@ -46,3 +46,8 @@ class Joueur(object):
         for carte in self.cartes:
             s = '%s\n%s' % (s, str(carte))
         return s
+
+    def cards_to_json(self):
+        cards = [{'name': c.name, 'value': c.value, 'color': c.color}
+                for c in self.cartes]
+        return json.dumps(cards)
