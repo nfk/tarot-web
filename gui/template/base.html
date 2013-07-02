@@ -1,12 +1,22 @@
 <html>
     <head>
         <title>{% block title %}Tarot Web{% endblock %}</title>
-        <script type="text/javascript" src="/media/jquery.js"></script>
+        <link rel="stylesheet" href="/media/css/default.css" />
+        <script type="text/javascript" src="/media/js/kinetic-v4.5.4.min.js"></script>
+        <script type="text/javascript" src="/media/js/game.js"></script>
     </head>
     <body>
-        <div class="container">
-            <div class="message"></div>
-            {% block content %}{% endblock %}
-        </div>
+        <header>
+        <h1>Tarot Web</h1>
+        <h2>Playing to Tarot everywhere</h2>
+        </header>
+
+        <section id="game">
+        {% block content %}{% endblock %}
+        </section>
+
+        <footer>
+        <p>taroweb project 2010-2013</p>
+        </footer>
     </body>
 </html>

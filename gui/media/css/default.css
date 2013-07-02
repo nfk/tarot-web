@@ -1,0 +1,12 @@
+body {
+    background: #aaa;
+    margin: 0;
+}
+
+header, footer {
+    text-align: center;
+}
+
+#game { 
+    background: #6B8E23;
+}
