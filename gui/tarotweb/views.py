@@ -10,7 +10,8 @@ def party(request):
     for i in range(3):
         party.addJoueur(JoueurIA("ia-" + str(i + 1)))
 
-    party.addJoueur(Joueur('player'))
+    player = Joueur('player one')
+    party.addJoueur(player)
     party.distribution()
 
-    return render(request, 'game.html', {'party': party})
+    return render(request, 'game.html', {'party': party, 'player': player})
